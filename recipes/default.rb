@@ -1,6 +1,11 @@
-packages = %w/
-  libxau6
-/
+packages = Array.new
+
+case node[:lsb][:codename]
+when "lucid", "precise"
+  packages |= %w/
+    libxau6
+  /
+end
 
 packages.each do |pkg|
   package pkg do
